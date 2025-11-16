@@ -1,0 +1,13 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\91946\\Downloads\\json-20250517.jar",
+        "c:\\Users\\91946\\Downloads\\spark-core-2.9.4.jar",
+        "c:\\Users\\91946\\Downloads\\gson-2.10.1.jar",
+        "c:\\Users\\91946\\Downloads\\slf4j-api-2.0.9.jar",
+        "c:\\Users\\91946\\Downloads\\slf4j-simple-2.0.9.jar",
+        "c:\\Users\\91946\\Downloads\\javax.servlet-api-4.0.1.jar"
+    ],
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.configuration.updateBuildConfiguration": "interactive"
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SentimentChain Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>SentimentChain Dashboard</h1>
+        <div class="dashboard-backdrop">
+   <img src="images/polka.png" alt="Polkadot Hackathon" />
+
+
+</div>
+
+        <div class="clock-calendar">
+            <div id="clocks">
+                <div>UTC: <span id="utcClock"></span></div>
+                <div>IST: <span id="istClock"></span></div>
+                <div>EST: <span id="estClock"></span></div>
+            </div>
+            <div id="calendar" class="calendar-widget">
+    <div class="calendar-header">
+        <span id="monthYear">November 2025</span>
+    </div>
+    <div class="calendar-days">
+        <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    </div>
+    <div class="calendar-dates" id="calendarDates">
+       
+    </div>
+</div>
+
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li>Analyze & Save</li>
+            <li>View All</li>
+            <li>Search Entity</li>
+            <li>Sorted by Score</li>
+            <li>Filter by Label</li>
+            <li>Latest per Entity</li>
+            <li>Entity History</li>
+            <li>Exit</li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="cards">
+            <div id="totalRecords">Total Records: <span>0</span></div>
+            <div id="positive">Positive: <span>0</span></div>
+            <div id="negative">Negative: <span>0</span></div>
+            <div id="neutral">Neutral: <span>0</span></div>
+        </section>
+
+           <!-- Charts -->
+            <div class="charts">
+                <div class="chart-card">
+                    <h3>Sentiment Distribution</h3>
+                    <canvas id="pieChart" width="300" height="300"></canvas>
+                </div>
+                <div class="line-chart-card">
+                    <h3>Sentiment Trend</h3>
+                    <canvas id="lineChart" width="600" height="300"></canvas>
+                </div>
+            </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+

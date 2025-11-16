@@ -1,0 +1,8 @@
+com\sentimentchain\util\ErrorResponse.class
+com\sentimentchain\SentimentDAO\SentimentDAO.class
+com\sentimentchain\node\NodeManager.class
+com\sentimentchain\model\SentimentRecord.class
+com\sentimentchain\service\SentimentAnalyzer.class
+com\sentimentchain\MainApp.class
+com\sentimentchain\api\SentimentAPI.class
+com\sentimentchain\config\CORSFilter.class

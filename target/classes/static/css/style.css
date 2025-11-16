@@ -1,0 +1,179 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f8;
+}
+
+.dashboard-backdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%; /* adjust size */
+    height: 100%;
+    opacity: 0.15; /* subtle, won’t overpower the dashboard */
+    z-index: 0;
+    overflow: hidden; /* behind the main content */
+}
+
+.dashboard-backdrop img  img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* scale to cover the area */
+    opacity: 0.3; /* slightly transparent so content stands out */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #2f3640;
+    color: #fff;
+}
+
+header h1{
+    position: relative;
+    z-index: 1; /* above the backdrop */
+    margin: 0 0 20px 0;
+    font-size: 2em;
+}
+.clock-calendar {
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    width: 100%;
+    position: relative;
+    z-index: 1; /* above the backdrop */
+}
+
+.clock-calendar #clocks div {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    background-color: #353b48;
+    padding: 10px;
+    list-style: none;
+    margin: 0;
+}
+
+nav ul li {
+    margin-right: 15px;
+    padding: 5px 10px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    z-index: 2; /* above backdrop */
+    position: relative;
+}
+
+nav ul li:hover {
+    background-color: #718093;
+     transform: translateY(-2px); 
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.cards div {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-weight: bold;
+}
+
+.charts {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.calendar-widget {
+    width: 180px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-family: 'Arial', sans-serif;
+    color: #2c3e50;
+}
+
+.calendar-header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.calendar-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 14px;
+    gap: 4px;
+}
+
+.calendar-dates div {
+    padding: 6px 0;
+    border-radius: 6px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.calendar-dates div:hover {
+    background: #3498db;
+    color: #fff;
+}
+
+.calendar-dates .today {
+    background: #2ecc71;
+    color: #fff;
+}
+
+
+/*#calendar {
+    margin-top: 10px;
+    justify-content: space-around;
+
+}
+
+.calendar-table {
+    border-collapse: collapse;
+    width: 200px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.calendar-table th {
+    background-color: #2f3640;
+    color: #591515;
+    padding: 5px 0;
+}
+
+.calendar-table td {
+    padding: 8px 0;
+    border: 1px 
+}*/
