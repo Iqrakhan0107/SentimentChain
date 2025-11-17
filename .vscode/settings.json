@@ -9,5 +9,6 @@
         "c:\\Users\\91946\\Downloads\\javax.servlet-api-4.0.1.jar"
     ],
     "java.debug.settings.onBuildFailureProceed": true,
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.compile.nullAnalysis.mode": "automatic"
 }

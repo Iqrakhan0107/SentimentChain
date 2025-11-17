@@ -1,0 +1,10 @@
+com\sentimentchain\SentimentDAO\SentimentDAO.class
+com\sentimentchain\model\SentimentRecord.class
+com\sentimentchain\config\CORSConfig$1.class
+com\sentimentchain\api\DashboardController.class
+com\sentimentchain\config\CORSConfig.class
+com\sentimentchain\service\SentimentAnalyzer.class
+com\sentimentchain\api\SentimentRequest.class
+com\sentimentchain\MainApp.class
+com\sentimentchain\api\SentimentChainApplication.class
+com\sentimentchain\api\SentimentController.class

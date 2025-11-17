@@ -16,7 +16,8 @@ public class SentimentRecord {
     }
 
     public SentimentRecord(String entity, String text, double score, String label) {
-        this(entity, text, score, label, java.time.LocalDateTime.now().toString());
+        this(entity, text, score, label, java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+);
     }
 
     public String getEntity() { return entity; }

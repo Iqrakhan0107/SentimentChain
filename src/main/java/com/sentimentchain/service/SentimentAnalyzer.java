@@ -1,48 +1,29 @@
 package com.sentimentchain.service;
 
 import com.sentimentchain.model.SentimentRecord;
-import com.sentimentchain.node.NodeManager;
-
 import java.util.List;
 
 public class SentimentAnalyzer {
 
-    private NodeManager nodeManager;
-    private List<String> availableNodes;
-
     public SentimentAnalyzer() {
-        nodeManager = new NodeManager();
-        refreshNodes();
-    }
-
-    /** Refresh available blockchain nodes */
-    public void refreshNodes() {
-        availableNodes = nodeManager.getAvailableNodes();
-        if (availableNodes.isEmpty()) {
-            System.out.println(" No blockchain nodes available, using local analysis.");
-        } else {
-            System.out.println(" Available nodes: " + availableNodes);
-        }
+        System.out.println("✔ Sentiment Analyzer initialized (local mode)");
     }
 
     /** Main method for sentiment analysis */
     public double analyzeSentiment(String text) {
+        if (text == null) return 0.0;
+
         text = text.toLowerCase();
 
-        // Use blockchain score if nodes are available
-        if (!availableNodes.isEmpty()) {
-            String node = availableNodes.get(0); // pick first available node
-            System.out.println("Using blockchain node: " + node);
+        // Local regex-based scoring
+        if (text.matches(".*(increase|rise|growth|booming|skyrocketing|surging|uptrend|outperform|amazing).*"))
+            return 0.8;
 
-            // Placeholder for future blockchain integration
-            // double blockchainScore = fetchScoreFromBlockchain(node, text);
-            // return blockchainScore;
-        }
+        if (text.matches(".*(fall|drop|decline|decreasing|downtrend|crashing|underperform|loss).*"))
+            return -0.8;
 
-        // Local regex-based scoring fallback
-        if (text.matches(".*(increase|rise|growth|booming|skyrocketing|surging|uptrend|outperform|amazing).*")) return 0.8;
-        if (text.matches(".*(fall|drop|decline|decreasing|downtrend|crashing|underperform|loss).*")) return -0.8;
-        if (text.matches(".*(stable|steady|unchanged|neutral|sideways).*")) return 0.0;
+        if (text.matches(".*(stable|steady|unchanged|neutral|sideways).*"))
+            return 0.0;
 
         return 0.0;
     }
@@ -64,6 +45,5 @@ public class SentimentAnalyzer {
         if (previousTotal == 0) return 0;
         return ((recentTotal - previousTotal) / previousTotal) * 100;
     }
-
-    
 }
+

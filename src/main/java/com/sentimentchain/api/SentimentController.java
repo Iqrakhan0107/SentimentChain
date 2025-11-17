@@ -1,78 +1,72 @@
 package com.sentimentchain.api;
 
-import com.sentimentchain.dao.SentimentDAO;
+import com.sentimentchain.SentimentDAO.SentimentDAO;
 import com.sentimentchain.model.SentimentRecord;
 import com.sentimentchain.service.SentimentAnalyzer;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin // allows frontend calls from different port
+@CrossOrigin(origins = "*")
 public class SentimentController {
 
-    private final SentimentAnalyzer analyzer = new SentimentAnalyzer();
-    private final SentimentDAO dao = new SentimentDAO();
+    private final SentimentAnalyzer analyzer;
+    private final SentimentDAO dao;
 
-    // 1. Analyze & Save
+    public SentimentController(SentimentDAO dao) {
+        this.analyzer = new SentimentAnalyzer();
+        this.dao = dao;
+    }
+
     @PostMapping("/analyze")
-    public SentimentRecord analyzeSentiment(@RequestBody SentimentRequest request) {
-        double score = analyzer.analyzeSentiment(request.getText());
+    public SentimentRecord analyze(@RequestBody Map<String, String> body) {
+        String entity = body.get("entity");
+        String text = body.get("text");
+
+        double score = analyzer.analyzeSentiment(text);
         String label = analyzer.getSentimentLabel(score);
+
         SentimentRecord record = new SentimentRecord(
-                request.getEntity(), request.getText(), score, label, LocalDateTime.now().toString()
+                entity,
+                text,
+                score,
+                label,
+                java.time.LocalDateTime.now().toString()
         );
+
         dao.saveSentiment(record);
         return record;
     }
 
-    // 2. View All Sentiments
-    @GetMapping("/all")
-    public List<SentimentRecord> getAll() {
+    @GetMapping("/all-sentiments")
+    public List<SentimentRecord> getAllSentiments() {
         return dao.getAllSentiments();
     }
 
-    // 3. Search by Entity
     @GetMapping("/search/{entity}")
     public List<SentimentRecord> search(@PathVariable String entity) {
         return dao.searchByEntity(entity);
     }
 
-    // 4. Sorted by Score
-    @GetMapping("/sorted")
-    public List<SentimentRecord> getSorted() {
+    @GetMapping("/sorted-sentiments")
+    public List<SentimentRecord> sorted() {
         return dao.getSortedByScore();
     }
 
-    // 5. Filter by Label
     @GetMapping("/filter/{label}")
-    public List<SentimentRecord> filterByLabel(@PathVariable String label) {
+    public List<SentimentRecord> filter(@PathVariable String label) {
         return dao.filterByLabel(label);
     }
 
-    // 6. Latest per Entity
-    @GetMapping("/latest")
-    public List<SentimentRecord> latestPerEntity() {
+    @GetMapping("/latest-all")
+    public List<SentimentRecord> latestAll() {
         return dao.getLatestRecords();
     }
 
-    // 7. Entity History
     @GetMapping("/history/{entity}")
-    public List<SentimentRecord> history(@PathVariable String entity) {
+    public List<SentimentRecord> fullHistory(@PathVariable String entity) {
         return dao.getEntityHistory(entity);
     }
-}
-
-// Request body for analyzing sentiment
-class SentimentRequest {
-    private String entity;
-    private String text;
-
-    public String getEntity() { return entity; }
-    public void setEntity(String entity) { this.entity = entity; }
-
-    public String getText() { return text; }
-    public void setText(String text) { this.text = text; }
 }
